@@ -1,55 +1,110 @@
-# Previsualizador de Etiquetas para Joyería
+# 🏷️ Label Software for Zebra ZD220
 
-Herramienta interactiva para diseñar y previsualizar etiquetas de joyería de 2.2 x 2.0 cm. Permite ajustar la posición de cada elemento visualmente y genera el comando de impresión en **PPLA** (para impresoras Argox OS-214 Plus) o **ZPL** (para Zebra ZD220). Incluye integración con Google Sheets para enviar el comando directamente a la impresora.
+**Impresión de etiquetas profesionales para joyería y pequeños negocios.**  
+*Diseñado para etiquetas con área útil de 2.1 cm de ancho por 2.0 cm de alto.*
 
-## 🚀 Características
+---
 
-- **Canvas interactivo**: Simula la etiqueta a tamaño real (2.2 cm × 2.0 cm) con elementos móviles.
-- **Ajuste de coordenadas**: Modifica las posiciones de logo, material, precio, código de barras e ID mediante campos numéricos.
-- **Generación de comandos**:
-  - **PPLA**: Comando listo para Argox (lenguaje PPLA).
-  - **ZPL**: Comando listo para Zebra (lenguaje ZPL).
-- **Botón de copia**: Copia el comando generado al portapapeles para pegarlo en Google Sheets o cualquier otro software.
-- **Integración con Google Sheets**: Script de Apps Script listo para recibir el comando y enviarlo a la impresora vía USB o red.
+## ✨ Descripción
 
-## 📦 Tecnologías utilizadas
+**Label Software** es una aplicación de escritorio ligera y de código abierto diseñada para imprimir etiquetas profesionales en impresoras **Zebra ZD220**, optimizada para el área útil estándar en joyería: **2.1 cm de ancho por 2.0 cm de alto**.
 
-- HTML5, CSS3, JavaScript (vanilla)
-- Google Apps Script (para la integración con Sheets)
+Fue creada pensando en joyerías, talleres artesanales y pequeños negocios que necesitan etiquetar su mercancía de forma rápida, sencilla y sin complicaciones.
 
-## 🧪 Uso
+Con una interfaz clara y funcional, permite añadir productos manualmente, pegar datos desde Excel, ajustar la posición de impresión (LS y LT) y detener el proceso en cualquier momento con el botón STOP.
 
-### 1. Abrir la herramienta
-- Abre el archivo `preview.html` en cualquier navegador moderno.
-- Verás una simulación de la etiqueta (recuadro blanco) y controles a la derecha.
+---
 
-### 2. Ajustar coordenadas
-- Los campos de texto contienen las coordenadas X,Y de cada elemento (en puntos, según el sistema de coordenadas de la impresora).
-- Modifica los valores y haz clic en **Actualizar** para mover el elemento en la previsualización.
-- También puedes arrastrar los elementos directamente en el canvas (soporte básico para ajuste visual).
+## 🚀 Características principales
 
-### 3. Generar comando de impresión
-- Selecciona el tipo de comando: **PPLA** (Argox) o **ZPL** (Zebra).
-- Haz clic en **Generar comando**.
-- Aparecerá el código completo listo para enviar a la impresora.
-- Usa el botón **Copiar al portapapeles** para copiarlo.
+- **Interfaz gráfica intuitiva** (basada en `tkinter`).
+- **Agregado rápido de productos** con validación de campos.
+- **Pegado directo desde Excel / Google Sheets / LibreOffice**.
+- **Ajuste de posición de impresión** (LS y LT) para centrar el texto en el área útil.
+- **Detención inmediata de la impresión** con el botón STOP.
+- **Guardado y carga de listas** en formato CSV.
+- **Edición directa en la tabla** con doble clic.
+- **Código abierto y gratuito** bajo licencia MIT.
 
-### 4. Integrar con Google Sheets
-#### Script de Apps Script
-Copia el siguiente código en el editor de Apps Script de tu hoja de cálculo:
+---
 
-```javascript
-// Configuración: cambia según tu impresora
-var IMPRESORA = "USB001";  // Para Argox en Windows (puerto)
-// var IMPRESORA = "192.168.1.100"; // Para Zebra en red
+## 🖥️ Captura de pantalla
 
-function imprimirComando(comando) {
-  // Envía el comando a la impresora (ejemplo con USB)
-  var tempFile = "C:\\temp\\etiqueta.prn";
-  var fso = new ActiveXObject("Scripting.FileSystemObject");
-  var file = fso.CreateTextFile(tempFile, true);
-  file.Write(comando);
-  file.Close();
-  var shell = new ActiveXObject("WScript.Shell");
-  shell.Run("cmd /c copy /b \"" + tempFile + "\" " + IMPRESORA, 0, true);
-}
+![Interfaz del software](interfaz_label_circulos.png)
+
+---
+
+## 📐 Área útil de la etiqueta
+
+El software está preconfigurado para trabajar con el tamaño estándar en joyería:
+
+| Medida | Valor |
+|--------|-------|
+| **Ancho** | 2.1 cm |
+| **Alto** | 2.0 cm |
+| **Área útil** | 2.1 cm x 2.0 cm |
+
+Este tamaño garantiza que el texto (precio, proveedor, material, etc.) quede centrado y legible en la etiqueta impresa.
+
+---
+
+## 📦 Requisitos del sistema
+
+| Componente | Mínimo requerido |
+|------------|------------------|
+| **Sistema operativo** | Windows 10 / 11 (64 bits) |
+| **Memoria RAM** | 4 GB |
+| **Almacenamiento** | 128 GB (SSD recomendado) |
+| **Impresora** | Zebra ZD220 (conexión USB) |
+| **Ribbon** | **Resina** (indispensable para etiquetas resistentes al agua) |
+
+---
+
+## 🔧 Instalación
+
+1. Descarga el archivo `LabelSoftware.exe` desde este repositorio.
+2. Ejecuta el archivo. No requiere instalación adicional.
+3. Conecta la impresora Zebra ZD220 por USB y enciéndela.
+4. ¡Comienza a imprimir tus etiquetas!
+
+---
+
+## 📖 Manual de usuario
+
+El manual completo está disponible en [PDF](manual_github.pdf).
+
+---
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Si encuentras un error, tienes una idea o quieres mejorar el código:
+
+1. Haz un **fork** del repositorio.
+2. Crea una rama con tu mejora (`git checkout -b mejora-nueva`).
+3. Haz commit de tus cambios (`git commit -m 'Agrega nueva funcionalidad'`).
+4. Haz push a la rama (`git push origin mejora-nueva`).
+5. Abre un **Pull Request**.
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia **MIT**. Esto significa que puedes usarlo, modificarlo y distribuirlo libremente, siempre que se mantenga el aviso de copyright.
+
+---
+
+## 🙌 Agradecimientos
+
+- A la comunidad de código abierto por su inspiración y herramientas.
+- A los usuarios que confían en este software para su día a día.
+
+---
+
+## 📬 Contacto
+
+¿Preguntas, sugerencias o comentarios?  
+Abre un [issue](https://github.com/tu-usuario/label-software-zd220/issues) o contáctame directamente a través de mi perfil de GitHub.
+
+---
+
+**¡Imprime etiquetas profesionales con facilidad y sin coste!**
